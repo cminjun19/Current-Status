@@ -24,7 +24,6 @@ body{
 
 header{
     height:70px;
-
     background:#111827;
 
     display:flex;
@@ -32,38 +31,46 @@ header{
     justify-content:space-between;
 
     padding:0 30px;
-
-    box-shadow:0 2px 10px rgba(0,0,0,0.2);
 }
 
 .title{
-    color:white;
+
+    display:flex;
+    align-items:center;
+    gap:12px;
 
     font-size:28px;
     font-weight:800;
-}
-
-.login{
 
     color:white;
+}
+
+/* 초록 불빛 */
+.status-dot{
+
+    width:12px;
+    height:12px;
+
+    border-radius:50%;
+
+    background:#22c55e;
+
+}
+
+/* 로그인 버튼 (나중 기능용) */
+.login{
 
     font-size:18px;
     font-weight:600;
 
-    padding:8px 16px;
+    color:white;
+
+    padding:6px 14px;
 
     border:2px solid white;
     border-radius:10px;
 
     cursor:pointer;
-
-    transition:0.2s;
-}
-
-.login:hover{
-
-    background:white;
-    color:black;
 }
 
 /* 현재 시간 */
@@ -82,8 +89,6 @@ header{
     padding:8px 15px;
 
     text-align:center;
-
-    box-shadow:0 3px 10px rgba(0,0,0,0.12);
 }
 
 .time-label{
@@ -110,7 +115,7 @@ header{
 
 .container{
 
-    height:calc(100vh - 130px);
+    height:calc(100vh - 140px);
 
     display:flex;
 
@@ -121,10 +126,8 @@ header{
 /* 왼쪽 */
 
 .left{
-
     display:flex;
     flex-direction:column;
-
     align-items:center;
 }
 
@@ -140,8 +143,6 @@ header{
     object-fit:cover;
 
     background:white;
-
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 .status{
@@ -157,8 +158,6 @@ header{
 
     font-size:48px;
     font-weight:bold;
-
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 /* 오른쪽 */
@@ -187,8 +186,6 @@ header{
 
     justify-content:center;
     align-items:center;
-
-    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
 .card-title{
@@ -212,7 +209,11 @@ header{
 <header>
 
     <div class="title">
-        Current Status
+
+        <div class="status-dot"></div>
+
+        현재 상태
+
     </div>
 
     <div class="login">
@@ -243,12 +244,8 @@ header{
             src="images/sleeping.png"
             alt="현재 상태">
 
-        <div
-            class="status"
-            id="statusText">
-
+        <div class="status" id="statusText">
             취침 중
-
         </div>
 
     </div>
@@ -257,25 +254,15 @@ header{
 
         <div class="card">
 
-            <div class="card-title">
-                문자
-            </div>
-
-            <div class="card-status">
-                O
-            </div>
+            <div class="card-title">문자</div>
+            <div class="card-status">O</div>
 
         </div>
 
         <div class="card">
 
-            <div class="card-title">
-                전화
-            </div>
-
-            <div class="card-status">
-                X
-            </div>
+            <div class="card-title">전화</div>
+            <div class="card-status">X</div>
 
         </div>
 
@@ -289,22 +276,17 @@ function updateTime(){
 
     const now = new Date();
 
-    const timeString =
-        now.toLocaleTimeString(
-            "ko-KR",
-            {
-                hour:"2-digit",
-                minute:"2-digit",
-                hour12:false
-            }
-        );
+    const timeString = now.toLocaleTimeString("ko-KR", {
+        hour: "2-digit",
+        minute: "2-digit",
+        hour12: false
+    });
 
-    document.getElementById("time").textContent =
-        timeString;
+    document.getElementById("time").textContent = timeString;
 }
 
 updateTime();
-setInterval(updateTime,1000);
+setInterval(updateTime, 1000);
 
 </script>
 
