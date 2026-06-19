@@ -3,25 +3,28 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Current Status</title>
 
 <style>
 
 *{
+    margin:0;
+    padding:0;
     box-sizing:border-box;
 }
 
 body{
-    margin:0;
-    background:#eee;
-    font-family:sans-serif;
+    background:#eeeeee;
+    font-family:"Malgun Gothic", sans-serif;
     height:100vh;
     overflow:hidden;
 }
 
+/* 헤더 */
+
 header{
-    height:10vh;
-    min-height:80px;
+    height:80px;
     background:black;
     color:white;
 
@@ -32,87 +35,163 @@ header{
     position:relative;
 }
 
-header h1{
-    margin:0;
+.title{
+    position:absolute;
+    left:30px;
+
+    font-size:32px;
+    font-weight:bold;
 }
 
 .login{
     position:absolute;
     right:30px;
+
     font-size:24px;
+    font-weight:bold;
+
     cursor:pointer;
 }
 
-.container{
-    height:90vh;
+/* 현재 시간 */
 
-    display:flex;
-    justify-content:space-evenly;
-    align-items:center;
+.time-box{
 
-    padding:20px 40px;
-}
+    width:fit-content;
 
-.left{
-    text-align:center;
-}
+    margin:20px auto;
 
-.profile{
-    width:min(40vw,45vh);
-    height:min(40vw,45vh);
-
-    border-radius:50%;
-    background:#222;
-}
-
-.status{
-    margin-top:20px;
+    background:white;
 
     border:4px solid black;
-    border-radius:20px;
+    border-radius:25px;
 
-    padding:15px;
+    padding:15px 40px;
 
-    font-size:clamp(24px,3vw,50px);
-    font-weight:bold;
+    text-align:center;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
-.right{
-    width:min(35vw,500px);
+.time-label{
+
+    font-size:18px;
+    font-weight:700;
+
+    color:#555;
+
+    margin-bottom:8px;
+
+    letter-spacing:2px;
+}
+
+#time{
+
+    font-size:48px;
+    font-weight:900;
+
+    letter-spacing:3px;
+
+    color:#111;
+}
+
+/* 본문 */
+
+.container{
+
+    height:calc(100vh - 180px);
+
+    display:flex;
+
+    justify-content:space-evenly;
+    align-items:center;
+}
+
+/* 왼쪽 */
+
+.left{
 
     display:flex;
     flex-direction:column;
-    gap:20px;
+
+    align-items:center;
 }
 
-.time{
-    background:black;
-    color:white;
+.profile{
 
-    text-align:center;
+    width:min(38vw,500px);
+    height:min(38vw,500px);
 
-    padding:20px;
+    border-radius:50%;
 
-    border-radius:25px;
+    border:6px solid black;
 
-    font-size:clamp(24px,2vw,40px);
-    font-weight:bold;
+    object-fit:cover;
+
+    background:white;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
 }
 
-.card{
+.status{
+
+    margin-top:25px;
+
+    background:white;
+
     border:4px solid black;
     border-radius:25px;
 
-    flex:1;
+    padding:18px 40px;
+
+    font-size:48px;
+    font-weight:bold;
+
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+/* 오른쪽 */
+
+.right{
+
+    width:min(32vw,500px);
 
     display:flex;
+    flex-direction:column;
+
+    gap:25px;
+}
+
+.card{
+
+    height:230px;
+
+    background:white;
+
+    border:4px solid black;
+    border-radius:25px;
+
+    display:flex;
+    flex-direction:column;
+
     justify-content:center;
     align-items:center;
 
-    font-size:40px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.15);
+}
+
+.card-title{
+
+    font-size:42px;
     font-weight:bold;
 
-    background:white;
+    margin-bottom:15px;
+}
+
+.card-status{
+
+    font-size:90px;
+    font-weight:bold;
 }
 
 </style>
@@ -121,43 +200,100 @@ header h1{
 
 <header>
 
-<h1>현재 상태</h1>
+    <div class="title">
+        현재 상태
+    </div>
 
-<div class="login">
-로그인
-</div>
+    <div class="login">
+        로그인
+    </div>
 
 </header>
+
+<div class="time-box">
+
+    <div class="time-label">
+        현재 시간
+    </div>
+
+    <div id="time">
+        로딩 중...
+    </div>
+
+</div>
 
 <div class="container">
 
     <div class="left">
 
-        <div class="profile"></div>
+        <img
+            id="statusImage"
+            class="profile"
+            src="images/sleeping.png"
+            alt="현재 상태">
 
-        <div class="status">
+        <div
+            class="status"
+            id="statusText">
+
             취침 중
+
         </div>
 
     </div>
 
     <div class="right">
 
-        <div class="time">
-            현재 시간
+        <div class="card">
+
+            <div class="card-title">
+                문자
+            </div>
+
+            <div class="card-status">
+                O
+            </div>
+
         </div>
 
         <div class="card">
-            문자
-        </div>
 
-        <div class="card">
-            전화
+            <div class="card-title">
+                전화
+            </div>
+
+            <div class="card-status">
+                X
+            </div>
+
         </div>
 
     </div>
 
 </div>
+
+<script>
+
+function updateTime(){
+
+    const now = new Date();
+
+    const timeString =
+        now.toLocaleTimeString(
+            "ko-KR",
+            {
+                hour12:false
+            }
+        );
+
+    document.getElementById("time").textContent =
+        timeString;
+}
+
+updateTime();
+setInterval(updateTime,1000);
+
+</script>
 
 </body>
 </html>
