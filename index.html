@@ -1,15 +1,238 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Status</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#eeeeee;
+    font-family:"Malgun Gothic",sans-serif;
+    min-height:100vh;
+}
+
+header{
+    height:70px;
+    background:#111827;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 30px;
+}
+
+.title{
+    font-size:28px;
+    font-weight:800;
+    color:white;
+}
+
+.login{
+    font-size:18px;
+    font-weight:600;
+
+    color:white;
+
+    padding:6px 14px;
+
+    border:2px solid white;
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.time-box{
+
+    width:220px;
+
+    margin:10px auto;
+
+    background:white;
+
+    border:3px solid black;
+    border-radius:16px;
+
+    padding:8px 15px;
+
+    text-align:center;
+}
+
+.time-label{
+
+    font-size:13px;
+    font-weight:700;
+
+    color:#666;
+
+    margin-bottom:2px;
+}
+
+#time{
+
+    font-size:26px;
+    font-weight:900;
+
+    color:#111;
+}
+
+.container{
+
+    display:flex;
+
+    justify-content:space-evenly;
+    align-items:center;
+
+    padding:10px 20px 20px;
+}
+
+.left{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.profile{
+
+    width:min(30vw,350px);
+    height:min(30vw,350px);
+
+    border-radius:50%;
+
+    border:6px solid black;
+
+    object-fit:cover;
+
+    background:white;
+}
+
+/* 현재 상태 표시창 */
+
+.status{
+
+    margin-top:20px;
+
+    background:white;
+
+    border:4px solid black;
+    border-radius:25px;
+
+    padding:15px 35px;
+
+    font-size:36px;
+    font-weight:bold;
+
+    text-align:center;
+}
+
+/* 현재 상태 선택창 (작게) */
+
+#statusSelect{
+
+    width:180px;
+
+    margin-top:15px;
+
+    padding:8px 12px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    text-align:center;
+
+    background:white;
+
+    border:3px solid black;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    appearance:none;
+    outline:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+    background-position:right 8px center;
+}
+
+.right{
+
+    width:min(30vw,450px);
+
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.card{
+
+    height:180px;
+
+    background:white;
+
+    border:4px solid black;
+    border-radius:25px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.card-title{
+
+    font-size:34px;
+    font-weight:bold;
+
+    margin-bottom:10px;
+}
+
+.card-status{
+
+    font-size:70px;
+    font-weight:bold;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="title">
+        현재 상태
+    </div>
+
+    <div class="login">
+        로그인
+    </div>
+
+</header>
+
+<div class="time-box">
+
+    <div class="time-label">
+        현재 시간
+    </div>
+
+    <div id="time">
+        로딩 중...
+    </div>
+
+</div>
+
 <div class="container">
-
-    <select id="statusSelect">
-
-        <option value="취침">취침</option>
-        <option value="컴퓨터 하는">컴퓨터 하는</option>
-        <option value="폰 하는">폰 하는</option>
-        <option value="볼일 보는">볼일 보는</option>
-        <option value="공부하는">공부하는</option>
-        <option value="학교 정규 수업">학교 정규 수업</option>
-
-    </select>
 
     <div class="left">
 
@@ -26,6 +249,17 @@
             취침 중
 
         </div>
+
+        <select id="statusSelect">
+
+            <option value="취침">취침</option>
+            <option value="컴퓨터 하는">컴퓨터 하는</option>
+            <option value="폰 하는">폰 하는</option>
+            <option value="볼일 보는">볼일 보는</option>
+            <option value="공부하는">공부하는</option>
+            <option value="학교 정규 수업">학교 정규 수업</option>
+
+        </select>
 
     </div>
 
@@ -58,3 +292,44 @@
     </div>
 
 </div>
+
+<script>
+
+function updateTime(){
+
+    const now = new Date();
+
+    const timeString =
+        now.toLocaleTimeString(
+            "ko-KR",
+            {
+                hour:"2-digit",
+                minute:"2-digit",
+                hour12:false
+            }
+        );
+
+    document.getElementById("time").textContent =
+        timeString;
+}
+
+updateTime();
+setInterval(updateTime,1000);
+
+const statusSelect =
+    document.getElementById("statusSelect");
+
+const statusText =
+    document.getElementById("statusText");
+
+statusSelect.addEventListener("change",()=>{
+
+    statusText.textContent =
+        statusSelect.value + " 중";
+
+});
+
+</script>
+
+</body>
+</html>
