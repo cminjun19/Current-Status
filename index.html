@@ -88,11 +88,50 @@ header{
 
     display:flex;
 
-    justify-content:space-evenly;
+    justify-content:center;
     align-items:center;
+
+    gap:40px;
 
     padding:10px 20px 20px;
 }
+
+/* 왼쪽 상태 선택 영역 */
+
+.status-menu{
+
+    width:180px;
+
+    display:flex;
+    justify-content:center;
+}
+
+#statusSelect{
+
+    width:180px;
+
+    padding:8px 12px;
+
+    font-size:16px;
+    font-weight:bold;
+
+    background:white;
+
+    border:3px solid black;
+    border-radius:12px;
+
+    cursor:pointer;
+
+    appearance:none;
+    outline:none;
+
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+
+    background-repeat:no-repeat;
+    background-position:right 8px center;
+}
+
+/* 가운데 */
 
 .left{
     display:flex;
@@ -114,8 +153,6 @@ header{
     background:white;
 }
 
-/* 현재 상태 표시창 */
-
 .status{
 
     margin-top:20px;
@@ -133,36 +170,7 @@ header{
     text-align:center;
 }
 
-/* 현재 상태 선택창 (작게) */
-
-#statusSelect{
-
-    width:180px;
-
-    margin-top:15px;
-
-    padding:8px 12px;
-
-    font-size:16px;
-    font-weight:bold;
-
-    text-align:center;
-
-    background:white;
-
-    border:3px solid black;
-    border-radius:12px;
-
-    cursor:pointer;
-
-    appearance:none;
-    outline:none;
-
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-
-    background-repeat:no-repeat;
-    background-position:right 8px center;
-}
+/* 오른쪽 */
 
 .right{
 
@@ -234,6 +242,25 @@ header{
 
 <div class="container">
 
+    <!-- 왼쪽 빈 공간에 상태 선택 -->
+
+    <div class="status-menu">
+
+        <select id="statusSelect">
+
+            <option value="취침">취침</option>
+            <option value="컴퓨터 하는">컴퓨터 하는</option>
+            <option value="폰 하는">폰 하는</option>
+            <option value="볼일 보는">볼일 보는</option>
+            <option value="공부하는">공부하는</option>
+            <option value="학교 정규 수업">학교 정규 수업</option>
+
+        </select>
+
+    </div>
+
+    <!-- 가운데 프로필 -->
+
     <div class="left">
 
         <img
@@ -250,18 +277,9 @@ header{
 
         </div>
 
-        <select id="statusSelect">
-
-            <option value="취침">취침</option>
-            <option value="컴퓨터 하는">컴퓨터 하는</option>
-            <option value="폰 하는">폰 하는</option>
-            <option value="볼일 보는">볼일 보는</option>
-            <option value="공부하는">공부하는</option>
-            <option value="학교 정규 수업">학교 정규 수업</option>
-
-        </select>
-
     </div>
+
+    <!-- 오른쪽 카드 -->
 
     <div class="right">
 
@@ -333,4 +351,3 @@ statusSelect.addEventListener("change",()=>{
 
 </body>
 </html>
-
