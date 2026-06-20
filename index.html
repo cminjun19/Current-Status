@@ -122,13 +122,6 @@ header{
     font-weight:bold;
 
     cursor:pointer;
-
-    transition:0.15s;
-}
-
-.status-menu button:hover{
-
-    transform:translateY(-2px);
 }
 
 #saveButton{
@@ -192,12 +185,12 @@ header{
 
 .card{
 
-    height:180px;
-
     background:white;
 
     border:4px solid black;
     border-radius:25px;
+
+    padding:20px;
 
     display:flex;
     flex-direction:column;
@@ -218,6 +211,31 @@ header{
 
     font-size:70px;
     font-weight:bold;
+
+    margin-bottom:15px;
+}
+
+.choice-buttons{
+
+    display:flex;
+
+    gap:10px;
+}
+
+.choice-buttons button{
+
+    width:60px;
+    height:40px;
+
+    border:3px solid black;
+    border-radius:10px;
+
+    background:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
 }
 
 </style>
@@ -250,29 +268,12 @@ header{
 
 <div class="status-menu">
 
-    <button onclick="changeStatus('취침')">
-        취침
-    </button>
-
-    <button onclick="changeStatus('컴퓨터 하는')">
-        컴퓨터
-    </button>
-
-    <button onclick="changeStatus('폰 하는')">
-        폰
-    </button>
-
-    <button onclick="changeStatus('볼일 보는')">
-        볼일
-    </button>
-
-    <button onclick="changeStatus('공부하는')">
-        공부
-    </button>
-
-    <button onclick="changeStatus('학교 정규 수업')">
-        학교
-    </button>
+    <button onclick="changeStatus('취침')">취침</button>
+    <button onclick="changeStatus('컴퓨터 하는')">컴퓨터</button>
+    <button onclick="changeStatus('폰 하는')">폰</button>
+    <button onclick="changeStatus('볼일 보는')">볼일</button>
+    <button onclick="changeStatus('공부하는')">공부</button>
+    <button onclick="changeStatus('학교 정규 수업')">학교</button>
 
     <button id="saveButton">
         저장
@@ -302,17 +303,37 @@ header{
 
     <div class="right">
 
+        <!-- 문자 -->
+
         <div class="card">
 
             <div class="card-title">
                 문자
             </div>
 
-            <div class="card-status">
+            <div
+                class="card-status"
+                id="messageStatus">
+
                 O
+
+            </div>
+
+            <div class="choice-buttons">
+
+                <button onclick="setMessageStatus('O')">
+                    O
+                </button>
+
+                <button onclick="setMessageStatus('X')">
+                    X
+                </button>
+
             </div>
 
         </div>
+
+        <!-- 전화 -->
 
         <div class="card">
 
@@ -320,8 +341,12 @@ header{
                 전화
             </div>
 
-            <div class="card-status">
+            <div
+                class="card-status"
+                id="phoneStatus">
+
                 X
+
             </div>
 
         </div>
@@ -357,6 +382,12 @@ function changeStatus(status){
 
     document.getElementById("statusText")
         .textContent = status + " 중";
+}
+
+function setMessageStatus(value){
+
+    document.getElementById("messageStatus")
+        .textContent = value;
 }
 
 </script>
