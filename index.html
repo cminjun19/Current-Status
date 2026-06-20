@@ -20,8 +20,6 @@ body{
     overflow:hidden;
 }
 
-/* 헤더 */
-
 header{
     height:70px;
     background:#111827;
@@ -40,10 +38,8 @@ header{
 }
 
 .login{
-
     font-size:18px;
     font-weight:600;
-
     color:white;
 
     padding:6px 14px;
@@ -53,8 +49,6 @@ header{
 
     cursor:pointer;
 }
-
-/* 현재 시간 */
 
 .time-box{
 
@@ -92,8 +86,6 @@ header{
     color:#111;
 }
 
-/* 본문 */
-
 .container{
 
     height:calc(100vh - 140px);
@@ -104,12 +96,24 @@ header{
     align-items:center;
 }
 
-/* 왼쪽 */
-
 .left{
     display:flex;
     flex-direction:column;
     align-items:center;
+}
+
+#statusSelect{
+
+    margin-bottom:20px;
+
+    padding:10px 15px;
+
+    font-size:20px;
+
+    border:3px solid black;
+    border-radius:12px;
+
+    background:white;
 }
 
 .profile{
@@ -140,8 +144,6 @@ header{
     font-size:48px;
     font-weight:bold;
 }
-
-/* 오른쪽 */
 
 .right{
 
@@ -215,6 +217,17 @@ header{
 
     <div class="left">
 
+        <select id="statusSelect">
+
+            <option value="취침">취침</option>
+            <option value="컴퓨터 하는">컴퓨터 하는</option>
+            <option value="폰 하는">폰 하는</option>
+            <option value="볼일 보는">볼일 보는</option>
+            <option value="공부하는">공부하는</option>
+            <option value="학교 정규 수업">학교 정규 수업</option>
+
+        </select>
+
         <img
             id="statusImage"
             class="profile"
@@ -266,7 +279,20 @@ function updateTime(){
 }
 
 updateTime();
-setInterval(updateTime, 1000);
+setInterval(updateTime,1000);
+
+const statusSelect =
+    document.getElementById("statusSelect");
+
+const statusText =
+    document.getElementById("statusText");
+
+statusSelect.addEventListener("change", () => {
+
+    statusText.textContent =
+        statusSelect.value + " 중";
+
+});
 
 </script>
 
