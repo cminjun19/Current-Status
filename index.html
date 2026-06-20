@@ -39,7 +39,6 @@ header{
 .login{
     font-size:18px;
     font-weight:600;
-
     color:white;
 
     padding:6px 14px;
@@ -51,7 +50,6 @@ header{
 }
 
 .time-box{
-
     width:220px;
 
     margin:10px auto;
@@ -67,7 +65,6 @@ header{
 }
 
 .time-label{
-
     font-size:13px;
     font-weight:700;
 
@@ -77,7 +74,6 @@ header{
 }
 
 #time{
-
     font-size:26px;
     font-weight:900;
 
@@ -96,42 +92,41 @@ header{
     padding:10px 20px 20px;
 }
 
-/* 왼쪽 상태 선택 영역 */
+/* 상태 선택 */
 
 .status-menu{
 
-    width:180px;
+    width:170px;
 
     display:flex;
-    justify-content:center;
+    flex-direction:column;
+
+    gap:10px;
 }
 
-#statusSelect{
+.status-menu button{
 
-    width:180px;
-
-    padding:8px 12px;
-
-    font-size:16px;
-    font-weight:bold;
-
-    background:white;
+    height:45px;
 
     border:3px solid black;
     border-radius:12px;
 
+    background:white;
+
+    font-size:18px;
+    font-weight:bold;
+
     cursor:pointer;
 
-    appearance:none;
-    outline:none;
-
-    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24'%3E%3Cpath fill='black' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
-
-    background-repeat:no-repeat;
-    background-position:right 8px center;
+    transition:0.15s;
 }
 
-/* 가운데 */
+.status-menu button:hover{
+
+    transform:translateY(-2px);
+}
+
+/* 프로필 */
 
 .left{
     display:flex;
@@ -242,24 +237,37 @@ header{
 
 <div class="container">
 
-    <!-- 왼쪽 빈 공간에 상태 선택 -->
+    <!-- 왼쪽 상태 선택 -->
 
     <div class="status-menu">
 
-        <select id="statusSelect">
+        <button onclick="changeStatus('취침')">
+            취침
+        </button>
 
-            <option value="취침">취침</option>
-            <option value="컴퓨터 하는">컴퓨터 하는</option>
-            <option value="폰 하는">폰 하는</option>
-            <option value="볼일 보는">볼일 보는</option>
-            <option value="공부하는">공부하는</option>
-            <option value="학교 정규 수업">학교 정규 수업</option>
+        <button onclick="changeStatus('컴퓨터 하는')">
+            컴퓨터
+        </button>
 
-        </select>
+        <button onclick="changeStatus('폰 하는')">
+            폰
+        </button>
+
+        <button onclick="changeStatus('볼일 보는')">
+            볼일
+        </button>
+
+        <button onclick="changeStatus('공부하는')">
+            공부
+        </button>
+
+        <button onclick="changeStatus('학교 정규 수업')">
+            학교
+        </button>
 
     </div>
 
-    <!-- 가운데 프로필 -->
+    <!-- 가운데 -->
 
     <div class="left">
 
@@ -279,7 +287,7 @@ header{
 
     </div>
 
-    <!-- 오른쪽 카드 -->
+    <!-- 오른쪽 -->
 
     <div class="right">
 
@@ -334,18 +342,11 @@ function updateTime(){
 updateTime();
 setInterval(updateTime,1000);
 
-const statusSelect =
-    document.getElementById("statusSelect");
+function changeStatus(status){
 
-const statusText =
-    document.getElementById("statusText");
-
-statusSelect.addEventListener("change",()=>{
-
-    statusText.textContent =
-        statusSelect.value + " 중";
-
-});
+    document.getElementById("statusText")
+        .textContent = status + " 중";
+}
 
 </script>
 
