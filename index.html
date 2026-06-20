@@ -34,30 +34,11 @@ header{
 }
 
 .title{
-
-    display:flex;
-    align-items:center;
-    gap:12px;
-
     font-size:28px;
     font-weight:800;
-
     color:white;
 }
 
-/* 초록 불빛 */
-.status-dot{
-
-    width:12px;
-    height:12px;
-
-    border-radius:50%;
-
-    background:#22c55e;
-
-}
-
-/* 로그인 버튼 (나중 기능용) */
 .login{
 
     font-size:18px;
@@ -209,11 +190,7 @@ header{
 <header>
 
     <div class="title">
-
-        <div class="status-dot"></div>
-
         현재 상태
-
     </div>
 
     <div class="login">
@@ -276,11 +253,14 @@ function updateTime(){
 
     const now = new Date();
 
-    const timeString = now.toLocaleTimeString("ko-KR", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: false
-    });
+    const timeString = now.toLocaleTimeString(
+        "ko-KR",
+        {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: false
+        }
+    );
 
     document.getElementById("time").textContent = timeString;
 }
