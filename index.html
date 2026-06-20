@@ -15,10 +15,11 @@
 
 body{
     background:#eeeeee;
-    font-family:"Malgun Gothic", sans-serif;
-    height:100vh;
-    overflow:hidden;
+    font-family:"Malgun Gothic",sans-serif;
+    min-height:100vh;
 }
+
+/* 헤더 */
 
 header{
     height:70px;
@@ -40,6 +41,7 @@ header{
 .login{
     font-size:18px;
     font-weight:600;
+
     color:white;
 
     padding:6px 14px;
@@ -50,11 +52,13 @@ header{
     cursor:pointer;
 }
 
+/* 현재 시간 */
+
 .time-box{
 
     width:220px;
 
-    margin:10px auto 15px auto;
+    margin:10px auto;
 
     background:white;
 
@@ -81,20 +85,22 @@ header{
     font-size:26px;
     font-weight:900;
 
-    letter-spacing:1px;
-
     color:#111;
 }
 
-.container{
+/* 본문 */
 
-    height:calc(100vh - 140px);
+.container{
 
     display:flex;
 
     justify-content:space-evenly;
     align-items:center;
+
+    padding:10px 20px 20px;
 }
+
+/* 왼쪽 */
 
 .left{
     display:flex;
@@ -104,11 +110,11 @@ header{
 
 #statusSelect{
 
-    margin-bottom:20px;
+    margin-bottom:15px;
 
     padding:10px 15px;
 
-    font-size:20px;
+    font-size:18px;
 
     border:3px solid black;
     border-radius:12px;
@@ -118,8 +124,8 @@ header{
 
 .profile{
 
-    width:min(38vw,500px);
-    height:min(38vw,500px);
+    width:min(30vw,350px);
+    height:min(30vw,350px);
 
     border-radius:50%;
 
@@ -132,32 +138,34 @@ header{
 
 .status{
 
-    margin-top:25px;
+    margin-top:20px;
 
     background:white;
 
     border:4px solid black;
     border-radius:25px;
 
-    padding:18px 40px;
+    padding:15px 35px;
 
-    font-size:48px;
+    font-size:36px;
     font-weight:bold;
 }
 
+/* 오른쪽 */
+
 .right{
 
-    width:min(32vw,500px);
+    width:min(30vw,450px);
 
     display:flex;
     flex-direction:column;
 
-    gap:25px;
+    gap:20px;
 }
 
 .card{
 
-    height:230px;
+    height:180px;
 
     background:white;
 
@@ -173,15 +181,15 @@ header{
 
 .card-title{
 
-    font-size:42px;
+    font-size:34px;
     font-weight:bold;
 
-    margin-bottom:15px;
+    margin-bottom:10px;
 }
 
 .card-status{
 
-    font-size:90px;
+    font-size:70px;
     font-weight:bold;
 }
 
@@ -234,8 +242,12 @@ header{
             src="images/sleeping.png"
             alt="현재 상태">
 
-        <div class="status" id="statusText">
+        <div
+            class="status"
+            id="statusText">
+
             취침 중
+
         </div>
 
     </div>
@@ -244,15 +256,25 @@ header{
 
         <div class="card">
 
-            <div class="card-title">문자</div>
-            <div class="card-status">O</div>
+            <div class="card-title">
+                문자
+            </div>
+
+            <div class="card-status">
+                O
+            </div>
 
         </div>
 
         <div class="card">
 
-            <div class="card-title">전화</div>
-            <div class="card-status">X</div>
+            <div class="card-title">
+                전화
+            </div>
+
+            <div class="card-status">
+                X
+            </div>
 
         </div>
 
@@ -266,16 +288,18 @@ function updateTime(){
 
     const now = new Date();
 
-    const timeString = now.toLocaleTimeString(
-        "ko-KR",
-        {
-            hour: "2-digit",
-            minute: "2-digit",
-            hour12: false
-        }
-    );
+    const timeString =
+        now.toLocaleTimeString(
+            "ko-KR",
+            {
+                hour:"2-digit",
+                minute:"2-digit",
+                hour12:false
+            }
+        );
 
-    document.getElementById("time").textContent = timeString;
+    document.getElementById("time").textContent =
+        timeString;
 }
 
 updateTime();
@@ -287,7 +311,7 @@ const statusSelect =
 const statusText =
     document.getElementById("statusText");
 
-statusSelect.addEventListener("change", () => {
+statusSelect.addEventListener("change",()=>{
 
     statusText.textContent =
         statusSelect.value + " 중";
