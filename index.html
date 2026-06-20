@@ -17,6 +17,7 @@ body{
     background:#eeeeee;
     font-family:"Malgun Gothic",sans-serif;
     min-height:100vh;
+    position:relative;
 }
 
 header{
@@ -87,7 +88,7 @@ header{
     justify-content:center;
     align-items:center;
 
-    gap:40px;
+    gap:120px;
 
     padding:10px 20px 20px;
 }
@@ -103,7 +104,9 @@ header{
 
     gap:10px;
 
-    margin-right:450px;
+    position:absolute;
+    left:30px;
+    top:180px;
 }
 
 .status-menu button{
@@ -138,8 +141,8 @@ header{
 
 .profile{
 
-    width:min(30vw,350px);
-    height:min(30vw,350px);
+    width:350px;
+    height:350px;
 
     border-radius:50%;
 
@@ -171,7 +174,7 @@ header{
 
 .right{
 
-    width:min(30vw,450px);
+    width:350px;
 
     display:flex;
     flex-direction:column;
@@ -237,35 +240,37 @@ header{
 
 </div>
 
+<!-- 상태 선택창 -->
+
+<div class="status-menu">
+
+    <button onclick="changeStatus('취침')">
+        취침
+    </button>
+
+    <button onclick="changeStatus('컴퓨터 하는')">
+        컴퓨터
+    </button>
+
+    <button onclick="changeStatus('폰 하는')">
+        폰
+    </button>
+
+    <button onclick="changeStatus('볼일 보는')">
+        볼일
+    </button>
+
+    <button onclick="changeStatus('공부하는')">
+        공부
+    </button>
+
+    <button onclick="changeStatus('학교 정규 수업')">
+        학교
+    </button>
+
+</div>
+
 <div class="container">
-
-    <div class="status-menu">
-
-        <button onclick="changeStatus('취침')">
-            취침
-        </button>
-
-        <button onclick="changeStatus('컴퓨터 하는')">
-            컴퓨터
-        </button>
-
-        <button onclick="changeStatus('폰 하는')">
-            폰
-        </button>
-
-        <button onclick="changeStatus('볼일 보는')">
-            볼일
-        </button>
-
-        <button onclick="changeStatus('공부하는')">
-            공부
-        </button>
-
-        <button onclick="changeStatus('학교 정규 수업')">
-            학교
-        </button>
-
-    </div>
 
     <div class="left">
 
