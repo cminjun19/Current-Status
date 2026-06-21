@@ -52,56 +52,41 @@ header{
 
 .time-box{
     width:220px;
-
     margin:10px auto;
-
     background:white;
-
     border:3px solid black;
     border-radius:16px;
-
     padding:8px 15px;
-
     text-align:center;
 }
 
 .time-label{
     font-size:13px;
     font-weight:700;
-
     color:#666;
-
     margin-bottom:2px;
 }
 
 #time{
     font-size:26px;
     font-weight:900;
-
     color:#111;
 }
 
 .container{
-
     display:flex;
-
     justify-content:center;
     align-items:center;
-
     gap:120px;
-
     padding:10px 20px 20px;
 }
 
 /* 상태 선택 */
 
 .status-menu{
-
     width:170px;
-
     display:flex;
     flex-direction:column;
-
     gap:10px;
 
     position:absolute;
@@ -110,25 +95,18 @@ header{
 }
 
 .status-menu button{
-
     height:45px;
-
     border:3px solid black;
     border-radius:12px;
-
     background:white;
-
     font-size:18px;
     font-weight:bold;
-
     cursor:pointer;
 }
 
 #saveButton{
-
     background:#111827;
     color:white;
-
     margin-top:10px;
 }
 
@@ -141,107 +119,82 @@ header{
 }
 
 .profile{
-
     width:350px;
     height:350px;
-
     border-radius:50%;
-
     border:6px solid black;
-
     object-fit:cover;
-
     background:white;
 }
 
 .status{
-
     margin-top:20px;
-
     background:white;
-
     border:4px solid black;
     border-radius:25px;
-
     padding:15px 35px;
-
     font-size:36px;
     font-weight:bold;
-
     text-align:center;
 }
 
 /* 오른쪽 */
 
 .right{
-
-    width:350px;
-
+    width:420px;
     display:flex;
     flex-direction:column;
-
     gap:20px;
 }
 
 .card{
-
-    position:relative;
-
     background:white;
-
     border:4px solid black;
     border-radius:25px;
-
-    padding:20px;
-
     min-height:180px;
+    padding:20px;
 
     display:flex;
     flex-direction:column;
-
     justify-content:center;
     align-items:center;
 }
 
 .card-title{
-
     font-size:34px;
     font-weight:bold;
-
     margin-bottom:10px;
 }
 
 .card-status{
-
     font-size:70px;
     font-weight:bold;
 }
 
-/* 문자 카드 OX 버튼 */
+/* 문자 카드 + 버튼 */
 
-.top-right{
-
-    position:absolute;
-
-    top:15px;
-    right:15px;
-
+.message-wrapper{
     display:flex;
+    align-items:flex-start;
+    gap:10px;
+}
 
+.message-buttons{
+    display:flex;
+    flex-direction:column;
     gap:8px;
 }
 
-.top-right button{
-
-    width:45px;
-    height:35px;
+.message-buttons button{
+    width:50px;
+    height:40px;
 
     border:3px solid black;
-    border-radius:8px;
+    border-radius:10px;
 
     background:white;
 
-    font-size:16px;
+    font-size:18px;
     font-weight:bold;
 
     cursor:pointer;
@@ -314,13 +267,25 @@ header{
 
         <!-- 문자 -->
 
-        <div class="card">
+        <div class="message-wrapper">
 
-            <div class="card-title">
-                문자
+            <div class="card" style="flex:1;">
+
+                <div class="card-title">
+                    문자
+                </div>
+
+                <div
+                    class="card-status"
+                    id="messageStatus">
+
+                    O
+
+                </div>
+
             </div>
 
-            <div class="top-right">
+            <div class="message-buttons">
 
                 <button onclick="setMessageStatus('O')">
                     O
@@ -329,14 +294,6 @@ header{
                 <button onclick="setMessageStatus('X')">
                     X
                 </button>
-
-            </div>
-
-            <div
-                class="card-status"
-                id="messageStatus">
-
-                O
 
             </div>
 
