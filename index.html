@@ -1,30 +1,368 @@
-<!-- 문자 -->
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Current Status</title>
 
-<div class="card">
+<style>
 
-    <div class="card-title">
-        문자
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#eeeeee;
+    font-family:"Malgun Gothic",sans-serif;
+    min-height:100vh;
+    position:relative;
+}
+
+header{
+    height:70px;
+    background:#111827;
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 30px;
+}
+
+.title{
+    font-size:28px;
+    font-weight:800;
+    color:white;
+}
+
+.login{
+    font-size:18px;
+    font-weight:600;
+    color:white;
+
+    padding:6px 14px;
+
+    border:2px solid white;
+    border-radius:10px;
+
+    cursor:pointer;
+}
+
+.time-box{
+    width:220px;
+
+    margin:10px auto;
+
+    background:white;
+
+    border:3px solid black;
+    border-radius:16px;
+
+    padding:8px 15px;
+
+    text-align:center;
+}
+
+.time-label{
+    font-size:13px;
+    font-weight:700;
+
+    color:#666;
+
+    margin-bottom:2px;
+}
+
+#time{
+    font-size:26px;
+    font-weight:900;
+
+    color:#111;
+}
+
+.container{
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    gap:120px;
+
+    padding:10px 20px 20px;
+}
+
+/* 상태 선택 */
+
+.status-menu{
+
+    width:170px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:10px;
+
+    position:absolute;
+    left:30px;
+    top:180px;
+}
+
+.status-menu button{
+
+    height:45px;
+
+    border:3px solid black;
+    border-radius:12px;
+
+    background:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+#saveButton{
+
+    background:#111827;
+    color:white;
+
+    margin-top:10px;
+}
+
+/* 프로필 */
+
+.left{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.profile{
+
+    width:350px;
+    height:350px;
+
+    border-radius:50%;
+
+    border:6px solid black;
+
+    object-fit:cover;
+
+    background:white;
+}
+
+.status{
+
+    margin-top:20px;
+
+    background:white;
+
+    border:4px solid black;
+    border-radius:25px;
+
+    padding:15px 35px;
+
+    font-size:36px;
+    font-weight:bold;
+
+    text-align:center;
+}
+
+/* 오른쪽 */
+
+.right{
+
+    width:350px;
+
+    display:flex;
+    flex-direction:column;
+
+    gap:20px;
+}
+
+.card{
+
+    background:white;
+
+    border:4px solid black;
+    border-radius:25px;
+
+    padding:20px;
+
+    display:flex;
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.card-title{
+
+    font-size:34px;
+    font-weight:bold;
+
+    margin-bottom:15px;
+}
+
+.message-row{
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:20px;
+}
+
+.card-status{
+
+    font-size:70px;
+    font-weight:bold;
+}
+
+.choice-buttons{
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:8px;
+}
+
+.choice-buttons button{
+
+    width:60px;
+    height:40px;
+
+    border:3px solid black;
+    border-radius:10px;
+
+    background:white;
+
+    font-size:18px;
+    font-weight:bold;
+
+    cursor:pointer;
+}
+
+</style>
+</head>
+<body>
+
+<header>
+
+    <div class="title">
+        현재 상태
     </div>
 
-    <div class="message-row">
+    <div class="login">
+        로그인
+    </div>
+
+</header>
+
+<div class="time-box">
+
+    <div class="time-label">
+        현재 시간
+    </div>
+
+    <div id="time">
+        로딩 중...
+    </div>
+
+</div>
+
+<div class="status-menu">
+
+    <button onclick="changeStatus('취침')">취침</button>
+    <button onclick="changeStatus('컴퓨터 하는')">컴퓨터</button>
+    <button onclick="changeStatus('폰 하는')">폰</button>
+    <button onclick="changeStatus('볼일 보는')">볼일</button>
+    <button onclick="changeStatus('공부하는')">공부</button>
+    <button onclick="changeStatus('학교 정규 수업')">학교</button>
+
+    <button id="saveButton">
+        저장
+    </button>
+
+</div>
+
+<div class="container">
+
+    <div class="left">
+
+        <img
+            id="statusImage"
+            class="profile"
+            src="images/sleeping.png"
+            alt="현재 상태">
 
         <div
-            class="card-status"
-            id="messageStatus">
+            class="status"
+            id="statusText">
 
-            O
+            취침 중
 
         </div>
 
-        <div class="choice-buttons">
+    </div>
 
-            <button onclick="setMessageStatus('O')">
-                O
-            </button>
+    <div class="right">
 
-            <button onclick="setMessageStatus('X')">
+        <!-- 문자 -->
+
+        <div class="card">
+
+            <div class="card-title">
+                문자
+            </div>
+
+            <div class="message-row">
+
+                <div
+                    class="card-status"
+                    id="messageStatus">
+
+                    O
+
+                </div>
+
+                <div class="choice-buttons">
+
+                    <button onclick="setMessageStatus('O')">
+                        O
+                    </button>
+
+                    <button onclick="setMessageStatus('X')">
+                        X
+                    </button>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- 전화 -->
+
+        <div class="card">
+
+            <div class="card-title">
+                전화
+            </div>
+
+            <div
+                class="card-status"
+                id="phoneStatus">
+
                 X
-            </button>
+
+            </div>
 
         </div>
 
@@ -32,20 +370,42 @@
 
 </div>
 
-<!-- 전화 -->
+<script>
 
-<div class="card">
+function updateTime(){
 
-    <div class="card-title">
-        전화
-    </div>
+    const now = new Date();
 
-    <div
-        class="card-status"
-        id="phoneStatus">
+    const timeString =
+        now.toLocaleTimeString(
+            "ko-KR",
+            {
+                hour:"2-digit",
+                minute:"2-digit",
+                hour12:false
+            }
+        );
 
-        X
+    document.getElementById("time").textContent =
+        timeString;
+}
 
-    </div>
+updateTime();
+setInterval(updateTime,1000);
 
-</div>
+function changeStatus(status){
+
+    document.getElementById("statusText")
+        .textContent = status + " 중";
+}
+
+function setMessageStatus(value){
+
+    document.getElementById("messageStatus")
+        .textContent = value;
+}
+
+</script>
+
+</body>
+</html>
