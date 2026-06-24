@@ -215,7 +215,9 @@ header{
         현재 상태
     </div>
 
-    <div class="login">
+    <div
+        class="login"
+        onclick="goLogin()">
         로그인
     </div>
 
@@ -270,8 +272,6 @@ header{
 
     <div class="right">
 
-        <!-- 문자 -->
-
         <div class="message-wrapper">
 
             <div class="card message-card">
@@ -303,8 +303,6 @@ header{
             </div>
 
         </div>
-
-        <!-- 전화 -->
 
         <div class="card">
 
@@ -359,6 +357,12 @@ function setMessageStatus(value){
 
     document.getElementById("messageStatus")
         .textContent = value;
+}
+
+function goLogin(){
+
+    window.location.href = "login.html";
+
 }
 
 </script>
