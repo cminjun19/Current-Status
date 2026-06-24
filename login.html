@@ -182,23 +182,21 @@ header{
 <script type="module">
 
 import { initializeApp }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
 
 import {
     getAuth,
     signInWithEmailAndPassword
 }
-from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+from "https://www.gstatic.com/firebasejs/12.15.0/firebase-auth.js";
 
 const firebaseConfig = {
-
-    apiKey: "여기에입력",
-    authDomain: "여기에입력",
-    projectId: "여기에입력",
-    storageBucket: "여기에입력",
-    messagingSenderId: "여기에입력",
-    appId: "여기에입력"
-
+    apiKey: "AIzaSyBdbjHChZ4FWpzxfoUUwZKrPhMj_oYcJGc",
+    authDomain: "current-status-906b8.firebaseapp.com",
+    projectId: "current-status-906b8",
+    storageBucket: "current-status-906b8.firebasestorage.app",
+    messagingSenderId: "8606166095",
+    appId: "1:8606166095:web:a63476910c6c72320e0e3a"
 };
 
 const app = initializeApp(firebaseConfig);
@@ -209,14 +207,10 @@ document
 .onclick = async ()=>{
 
     const email =
-    document
-    .getElementById("email")
-    .value;
+    document.getElementById("email").value;
 
     const password =
-    document
-    .getElementById("password")
-    .value;
+    document.getElementById("password").value;
 
     try{
 
@@ -225,6 +219,8 @@ document
             email,
             password
         );
+
+        alert("로그인 성공");
 
         window.location.href =
         "index.html";
@@ -237,6 +233,8 @@ document
         .getElementById("error")
         .textContent =
         "이메일 또는 비밀번호가 올바르지 않습니다.";
+
+        console.error(error);
 
     }
 
