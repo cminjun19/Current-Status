@@ -2,38 +2,84 @@
 <html lang="ko">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>로그인</title>
-
-<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="login-container">
+<h1>로그인</h1>
 
-    <h1>Current Status</h1>
+<input
+type="email"
+id="email"
+placeholder="이메일">
 
-    <input
-        type="email"
-        id="email"
-        placeholder="이메일">
+<br><br>
 
-    <input
-        type="password"
-        id="password"
-        placeholder="비밀번호">
+<input
+type="password"
+id="password"
+placeholder="비밀번호">
 
-    <button id="loginBtn">
-        로그인
-    </button>
+<br><br>
 
-    <p id="error"></p>
+<button id="loginBtn">
+로그인
+</button>
 
-</div>
+<script type="module">
 
-<script type="module"
-src="login.js"></script>
+import { initializeApp }
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+
+import {
+getAuth,
+signInWithEmailAndPassword
+}
+from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+const firebaseConfig = {
+  /* Firebase 설정 */
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+document
+.getElementById("loginBtn")
+.onclick = async ()=>{
+
+    const email =
+    document
+    .getElementById("email")
+    .value;
+
+    const password =
+    document
+    .getElementById("password")
+    .value;
+
+    try{
+
+        await signInWithEmailAndPassword(
+            auth,
+            email,
+            password
+        );
+
+        location.href =
+        "index.html";
+
+    }
+
+    catch{
+
+        alert("로그인 실패");
+
+    }
+
+};
+
+</script>
 
 </body>
 </html>
