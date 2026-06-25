@@ -50,6 +50,11 @@ header{
     cursor:pointer;
 }
 
+#authButtons{
+    display:flex;
+    gap:10px;
+}
+
 .time-box{
     width:220px;
     margin:10px auto;
@@ -215,10 +220,16 @@ header{
         현재 상태
     </div>
 
-    <div
-        class="login"
-        onclick="goLogin()">
-        로그인
+    <div id="authButtons">
+
+        <div
+            class="login"
+            onclick="goLogin()">
+
+            로그인
+
+        </div>
+
     </div>
 
 </header>
@@ -251,7 +262,6 @@ header{
 </div>
 
 <div class="container">
-
     <div class="left">
 
         <img
@@ -361,8 +371,58 @@ function setMessageStatus(value){
 
 function goLogin(){
 
-    window.location.href = "login.html";
+    window.location.href =
+    "login.html";
 
+}
+
+function logout(){
+
+    localStorage.removeItem(
+        "loggedIn"
+    );
+
+    location.reload();
+
+}
+
+function goMyPage(){
+
+    alert(
+        "마이페이지 준비중"
+    );
+
+}
+
+if(
+    localStorage.getItem(
+        "loggedIn"
+    ) === "true"
+){
+
+    document
+    .getElementById(
+        "authButtons"
+    )
+    .innerHTML = `
+
+        <div
+            class="login"
+            onclick="logout()">
+
+            로그아웃
+
+        </div>
+
+        <div
+            class="login"
+            onclick="goMyPage()">
+
+            마이페이지
+
+        </div>
+
+    `;
 }
 
 </script>
