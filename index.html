@@ -103,7 +103,7 @@ header{
 }
 
 .right{
-    width:360px;
+    width:500px;
 
     display:flex;
     flex-direction:column;
@@ -117,7 +117,7 @@ header{
     border:4px solid black;
     border-radius:25px;
 
-    min-height:140px;
+    min-height:220px;
 
     display:flex;
     flex-direction:column;
@@ -126,17 +126,17 @@ header{
 }
 
 .card-title{
-    font-size:28px;
+    font-size:38px;
     font-weight:bold;
 }
 
 .card-status{
-    font-size:60px;
+    font-size:90px;
     font-weight:bold;
 }
 
 .message-card{
-    width:360px;
+    width:500px;
 }
 
 </style>
@@ -280,9 +280,7 @@ window.goLogin = function(){
 
 window.goMyPage = function(){
 
-    alert(
-        "마이페이지 준비중"
-    );
+    alert("마이페이지 준비중");
 
 }
 
@@ -320,9 +318,7 @@ onAuthStateChanged(auth,(user)=>{
 
         `;
 
-    }
-
-    else{
+    }else{
 
         document
         .getElementById("authButtons")
