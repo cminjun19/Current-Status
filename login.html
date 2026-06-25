@@ -36,7 +36,7 @@ header{
     color:white;
 }
 
-.login{
+.home-btn{
     font-size:18px;
     font-weight:600;
     color:white;
@@ -140,7 +140,7 @@ header{
     </div>
 
     <div
-        class="login"
+        class="home-btn"
         onclick="window.location.href='index.html'">
 
         홈
@@ -207,10 +207,14 @@ document
 .onclick = async ()=>{
 
     const email =
-    document.getElementById("email").value;
+    document
+    .getElementById("email")
+    .value;
 
     const password =
-    document.getElementById("password").value;
+    document
+    .getElementById("password")
+    .value;
 
     try{
 
@@ -218,6 +222,11 @@ document
             auth,
             email,
             password
+        );
+
+        localStorage.setItem(
+            "loggedIn",
+            "true"
         );
 
         alert("로그인 성공");
