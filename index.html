@@ -69,7 +69,9 @@ header{
     align-items:flex-start;
     gap:70px;
     padding-top:20px;
-    margin-left:-40px;
+
+    /* 전체를 왼쪽으로 이동 */
+    margin-left:-90px;
 }
 
 .left{
@@ -78,20 +80,29 @@ header{
     align-items:center;
 }
 
+/* 프로필 크게 */
+
 .profile{
-    width:340px;
-    height:340px;
+    width:380px;
+    height:380px;
+
     border-radius:50%;
     border:6px solid black;
+
     object-fit:cover;
-    margin-left:-35px;
+
+    margin-left:-60px;
 }
 
+/* 현재 상태 표시창 */
+
 .status{
-    width:350px;
-    height:90px;
-    margin-top:20px;
-    margin-left:-55px;
+
+    width:360px;
+    height:95px;
+
+    margin-top:22px;
+    margin-left:-60px;
 
     background:white;
 
@@ -102,20 +113,24 @@ header{
     justify-content:center;
     align-items:center;
 
-    font-size:30px;
+    font-size:32px;
     font-weight:900;
 
     text-align:center;
 }
 
 .right{
+
     width:420px;
+
     display:flex;
     flex-direction:column;
+
     gap:25px;
 }
 
 .card{
+
     width:420px;
     height:220px;
 
@@ -131,15 +146,17 @@ header{
 }
 
 .card-title{
+
     font-size:26px;
     font-weight:900;
-    margin-bottom:10px;
+
+    margin-bottom:12px;
 }
 
 .card-status{
+
     font-size:90px;
     font-weight:900;
-    line-height:1;
 }
 </style>
 </head>
@@ -299,12 +316,20 @@ onAuthStateChanged(auth,(user)=>{
 
         document.getElementById("authButtons").innerHTML = `
 
-            <div class="login-btn" onclick="logout()">
+            <div
+                class="login-btn"
+                onclick="logout()">
+
                 로그아웃
+
             </div>
 
-            <div class="login-btn" onclick="goMyPage()">
+            <div
+                class="login-btn"
+                onclick="goMyPage()">
+
                 마이페이지
+
             </div>
 
         `;
@@ -313,8 +338,12 @@ onAuthStateChanged(auth,(user)=>{
 
         document.getElementById("authButtons").innerHTML = `
 
-            <div class="login-btn" onclick="goLogin()">
+            <div
+                class="login-btn"
+                onclick="goLogin()">
+
                 로그인
+
             </div>
 
         `;
