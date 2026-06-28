@@ -22,11 +22,9 @@ body{
 header{
     height:70px;
     background:#111827;
-
     display:flex;
     align-items:center;
     justify-content:space-between;
-
     padding:0 30px;
 }
 
@@ -82,12 +80,12 @@ header{
 .profile{
     width:300px;
     height:300px;
-
     border-radius:50%;
     border:6px solid black;
-
     object-fit:cover;
 }
+
+/* 현재 상태 표시창 */
 
 .status{
     margin-top:25px;
@@ -97,14 +95,16 @@ header{
     border:5px solid black;
     border-radius:22px;
 
-    width:360px;
-    height:90px;
+    width:430px;
+    height:95px;
+
+    margin-left:-35px;
 
     display:flex;
     justify-content:center;
     align-items:center;
 
-    font-size:28px;
+    font-size:30px;
     font-weight:900;
 
     text-align:center;
@@ -112,16 +112,13 @@ header{
 
 .right{
     width:420px;
-
     display:flex;
     flex-direction:column;
-
     gap:25px;
 }
 
 .card{
     background:white;
-
     border:5px solid black;
     border-radius:28px;
 
@@ -186,7 +183,8 @@ header{
         <img
             class="profile"
             id="statusImage"
-            src="images/sleeping.png">
+            src="images/sleeping.png"
+            alt="현재 상태">
 
         <div
             class="status"
@@ -265,14 +263,12 @@ function updateTime(){
     const now = new Date();
 
     document.getElementById("time").textContent =
-    now.toLocaleTimeString(
-        "ko-KR",
-        {
-            hour:"2-digit",
-            minute:"2-digit",
-            hour12:false
-        }
-    );
+    now.toLocaleTimeString("ko-KR",{
+        hour:"2-digit",
+        minute:"2-digit",
+        hour12:false
+    });
+
 }
 
 updateTime();
@@ -304,20 +300,12 @@ onAuthStateChanged(auth,(user)=>{
 
         document.getElementById("authButtons").innerHTML = `
 
-            <div
-                class="login-btn"
-                onclick="logout()">
-
+            <div class="login-btn" onclick="logout()">
                 로그아웃
-
             </div>
 
-            <div
-                class="login-btn"
-                onclick="goMyPage()">
-
+            <div class="login-btn" onclick="goMyPage()">
                 마이페이지
-
             </div>
 
         `;
@@ -326,12 +314,8 @@ onAuthStateChanged(auth,(user)=>{
 
         document.getElementById("authButtons").innerHTML = `
 
-            <div
-                class="login-btn"
-                onclick="goLogin()">
-
+            <div class="login-btn" onclick="goLogin()">
                 로그인
-
             </div>
 
         `;
