@@ -100,17 +100,20 @@ header{
     font-weight:900;
 }
 
+/* 문자/전화만 오른쪽으로 이동 */
+
 .right{
     width:560px;
+
     display:flex;
     flex-direction:column;
+
     gap:30px;
+
+    margin-left:120px;
 }
 
-/* 문자/전화 카드만 크게 */
-
 .card{
-
     width:560px;
     height:250px;
 
@@ -126,14 +129,12 @@ header{
 }
 
 .card-title{
-
     font-size:32px;
     font-weight:900;
     margin-bottom:15px;
 }
 
 .card-status{
-
     font-size:110px;
     font-weight:900;
 }
@@ -284,6 +285,8 @@ window.goMyPage = function(){
 window.logout = async function(){
 
     await signOut(auth);
+
+    location.reload();
 
 }
 
